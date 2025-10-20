@@ -67,18 +67,29 @@ const Index = () => {
         
         <SearchFilter />
         
-        <section id="showcase" className="container pb-16">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <section id="showcase" className="container pb-24">
+          <div className="mb-12 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+              Featured Designs
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Discover the latest and greatest in web design
+            </p>
+          </div>
+
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {websites.map((website, index) => (
-              <WebsiteCard key={index} {...website} />
+              <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <WebsiteCard {...website} />
+              </div>
             ))}
           </div>
           
-          <div className="mt-12 flex justify-center">
+          <div className="mt-16 flex justify-center">
             <Button 
               variant="outline" 
               size="lg"
-              className="border-border hover:bg-card hover:border-primary/50 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
+              className="h-14 px-8 border-2 hover:bg-card hover:border-primary/50 transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl rounded-xl text-base font-medium"
             >
               Load more websites
             </Button>
