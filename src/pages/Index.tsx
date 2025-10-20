@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import SearchFilter from "@/components/SearchFilter";
 import WebsiteCard from "@/components/WebsiteCard";
+import About from "@/components/About";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -58,7 +59,7 @@ const websites = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background transition-colors duration-300">
       <Navbar />
       
       <main>
@@ -66,7 +67,7 @@ const Index = () => {
         
         <SearchFilter />
         
-        <section className="container pb-16">
+        <section id="showcase" className="container pb-16">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {websites.map((website, index) => (
               <WebsiteCard key={index} {...website} />
@@ -77,36 +78,38 @@ const Index = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-border hover:bg-card hover:border-primary/50"
+              className="border-border hover:bg-card hover:border-primary/50 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg"
             >
               Load more websites
             </Button>
           </div>
         </section>
+
+        <About />
       </main>
       
-      <footer className="border-t border-border py-8">
+      <footer className="border-t border-border py-8 bg-muted/30">
         <div className="container">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex gap-6">
-              <Link 
-                to="/" 
+              <button 
+                onClick={() => document.getElementById('showcase')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 Explore
-              </Link>
+              </button>
               <Link 
                 to="/sponsor" 
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 Sponsor
               </Link>
-              <Link 
-                to="/about" 
+              <button 
+                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 About
-              </Link>
+              </button>
               <Link 
                 to="/submit" 
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
